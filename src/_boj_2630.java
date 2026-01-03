@@ -26,33 +26,33 @@ public class _boj_2630 {
 
     private static int findPaper(int sr, int sc, int er, int ec, int color) {
         if (check(sr, sc, er, ec, color)) {
-           return 1;
+            return 1;
         }
 
         if (er - sr == 1 && ec - sc == 1) {
             return 0;
         }
 
-
-        int midR = (sr + er) / 2;
-        int midC = (sc + ec) / 2;
+        int midR = (sr + er) >> 1;
+        int midC = (sc + ec) >> 1;
         int answer = 0;
         answer += findPaper(sr, sc, midR, midC, color);
-        answer += findPaper(sr, midC, midR, ec, color);
         answer += findPaper(midR, sc, er, midC, color);
+        answer += findPaper(sr, midC, midR, ec, color);
         answer += findPaper(midR, midC, er, ec, color);
-
         return answer;
     }
 
     private static boolean check(int sr, int sc, int er, int ec, int color) {
         for (int i = sr; i < er; i++) {
             for (int j = sc; j < ec; j++) {
-                if (map[i][j] != color) return false;
+                if (map[i][j] != color) {
+                    {
+                        return false;
+                    }
+                }
             }
         }
         return true;
     }
-
-
 }
