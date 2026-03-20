@@ -3,27 +3,15 @@ import java.util.*;
 class Solution {
     public void moveZeroes(int[] nums) {
         int N = nums.length;
-        List<Integer> arl = new ArrayList<>();
-        for (int val : nums) {
-            if (val == 0) continue;
-            arl.add(val);
-        }
+        int zeroIdx = 0;
 
-        for (int i = 0 ; i < nums.length; i++) {
-            if (arl.size() <= i) {
-                nums[i] = 0;
-                continue;
+        for (int i = 0 ; i < N ; i++) {
+            if (nums[i] != 0) {
+                nums[zeroIdx++] = nums[i];
             }
-            nums[i] = arl.get(i);
         }
-
-        
+        for (int j = zeroIdx ; j < N ; j++) {
+            nums[j] = 0;
+        }   
     }
-    public void swap(int[] nums, int src, int target) {
-        int temp = nums[src];
-        nums[src] = nums[target];
-        nums[target] = temp;
-        return;
-    }
-
 }
