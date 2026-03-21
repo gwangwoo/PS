@@ -1,20 +1,11 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
-        Set<Integer> ts = new TreeSet<>();
-        int j = 0;
-        for (int i = 0 ; i < nums.length ; i++) {
-            if (!ts.contains(nums[i])) {
-                ts.add(nums[i]);
-                swap(nums, i, j);
-                j++;
-                continue;
+        int i = 0;
+        for (int j = 1 ; j < nums.length; j++) {
+            if (nums[j] != nums[i]) {
+                nums[++i] = nums[j];
             }
         }
-        return ts.size();
     }
-    public void swap(int[] nums, int src, int target) {
-        int temp = nums[src];
-        nums[src] = nums[target];
-        nums[target] = temp;
-    }
+    return i+1;
 }
