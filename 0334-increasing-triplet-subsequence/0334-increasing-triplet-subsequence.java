@@ -5,17 +5,17 @@ class Solution {
         int third = Integer.MAX_VALUE;
 
         for (int i = 0 ; i < nums.length ; i++) {
-            if (first > nums[i]) {
+            if (first >= nums[i]) {
                 first = nums[i];
                 continue;
             }
-            if (first < nums[i] && second > nums[i]) {
+            if (second >= nums[i]) {
                 second = nums[i];
                 continue;
-            }
-            if (first < nums[i] && second < nums[i] && third >= nums[i]) {
+            } else {
                 return true;
             }
+            
         }
         return false;
     }
